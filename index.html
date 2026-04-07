@@ -7,37 +7,65 @@
     <style>
         /* Reset & Dasar */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; background-color: #a11414; color: white; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; background-color: #a11414; color: white; scroll-behavior: smooth; }
         
-        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
-        section { padding: 60px 20px; text-align: center; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        section { padding: 80px 20px; text-align: center; }
 
-        /* Header / Hero */
-        header { background-color: #1a1a1a; padding: 100px 20px; }
-        .hero-title { font-size: 3rem; font-weight: bold; text-transform: uppercase; letter-spacing: 5px; }
-        .hero-subtitle { color: #ccc; }
+        /* --- Header / Hero (DIPERBARUI) --- */
+        header { 
+            background-color: #1a1a1a; 
+            padding: 80px 20px; /* Padding dikurangi agar proporsional */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 50vh; /* Memastikan header memiliki ketinggian minimum */
+        }
+
+        .hero-logo-container {
+            max-width: 600px; /* Batas lebar logo di desktop */
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .hero-logo {
+            width: 100%;
+            height: auto;
+            display: block;
+            /* Opsional: Tambahkan sedikit bayangan halus agar gambar lebih 'hidup' di latar gelap */
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); 
+        }
+
+        /* --- Bagian Lainnya (Tetap) --- */
 
         /* Tentang Saya */
-        .tentang { display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; text-align: left; }
-        .profile-img { width: 250px; height: 250px; border-radius: 50%; background: url('https://via.placeholder.com/250') center/cover; border: 5px solid white; }
+        .tentang { display: flex; align-items: center; justify-content: center; gap: 50px; flex-wrap: wrap; text-align: left; background-color: #911212; border-radius: 15px; margin-top: -40px; position: relative; z-index: 10; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .profile-img { width: 200px; height: 200px; border-radius: 50%; background: url('https://via.placeholder.com/200') center/cover; border: 5px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
         .tentang-text { flex: 1; min-width: 300px; }
+        .tentang h2 { font-size: 2.2rem; margin-bottom: 15px; }
 
         /* Sample Projects Grid */
         .projects { background-color: white; color: #333; }
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-top: 30px; }
-        .project-card { border: 1px solid #ddd; padding: 20px; background: #f9f9f9; min-height: 150px; display: flex; align-items: center; justify-content: center; }
+        .projects h2 { font-size: 2.5rem; font-style: italic; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 40px; }
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; }
+        .project-card { border: 1px solid #eee; padding: 30px; background: #fdfdfd; min-height: 180px; display: flex; align-items: center; justify-content: center; border-radius: 10px; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; }
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
         /* Section Merah (Desain Produk & Instagram) */
         .red-section { background-color: #a11414; color: white; }
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 30px; }
-        .gallery-item { background: #333; height: 250px; border-radius: 8px; }
+        .red-section h2, section style h2 { margin-bottom: 40px; font-size: 2.2rem; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .gallery-item { background: #333; height: 300px; border-radius: 12px; transition: transform 0.3s ease; cursor: pointer; overflow: hidden; }
+        .gallery-item:hover { transform: scale(1.02); }
 
         /* Footer */
-        footer { background-color: #1a1a1a; padding: 80px 20px; font-size: 2rem; font-weight: bold; }
+        footer { background-color: #1a1a1a; padding: 60px 20px; font-size: 1.5rem; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; color: #ccc; }
 
         /* Responsif */
-        @media (max-width: 600px) {
-            .hero-title { font-size: 2rem; }
+        @media (max-width: 768px) {
+            .tentang { gap: 30px; padding: 40px 20px; text-align: center; }
+            .tentang-text { text-align: center; }
+            .hero-logo-container { max-width: 80%; } /* Logo sedikit mengecil di mobile */
         }
     </style>
 </head>
@@ -45,12 +73,13 @@
 
     <header>
         <div class="container">
-            <h1 class="hero-title">Creative PORTOFOLIO</h1>
-            <p class="hero-subtitle">Fatur Rahman - 2026</p>
-        </div>
+            <div class="hero-logo-container">
+                <img src="image_0.png" alt="Creative Portfolio - Fatur Rahman 2026" class="hero-logo">
+            </div>
+            </div>
     </header>
 
-    <section class="tentang container">
+    <section id="tentang" class="tentang container">
         <div class="profile-img"></div>
         <div class="tentang-text">
             <h2>Tentang Saya</h2>
@@ -58,31 +87,33 @@
         </div>
     </section>
 
-    <section class="projects">
+    <section id="projects" class="projects">
         <div class="container">
-            <h2 style="font-size: 2.5rem; font-style: italic;">sample projects</h2>
+            <h2>sample projects</h2>
             <div class="project-grid">
                 <div class="project-card"><strong>LOGO 1</strong></div>
                 <div class="project-card"><strong>LOGO 2</strong></div>
                 <div class="project-card"><strong>LOGO 3</strong></div>
-                <div class="project-card"><strong>LOGO 4</strong></div>
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/150x50?text=CLIENT+LOGO" alt="Client Logo" style="max-width: 100%;">
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="red-section">
+    <section id="desain" class="red-section">
         <div class="container">
             <h2>Desain Produk & Infografis</h2>
             <div class="gallery">
-                <div class="gallery-item"></div>
-                <div class="gallery-item"></div>
-                <div class="gallery-item"></div>
-                <div class="gallery-item"></div>
+                <div class="gallery-item" style="background: url('https://via.placeholder.com/300x300') center/cover;"></div>
+                <div class="gallery-item" style="background: url('https://via.placeholder.com/300x300') center/cover;"></div>
+                <div class="gallery-item" style="background: url('https://via.placeholder.com/300x300') center/cover;"></div>
+                <div class="gallery-item" style="background: url('https://via.placeholder.com/300x300') center/cover;"></div>
             </div>
         </div>
     </section>
 
-    <section style="background-color: #8a0e0e;">
+    <section id="instagram" style="background-color: #8a0e0e;">
         <div class="container">
             <h2>Konten Instagram</h2>
             <div class="gallery">
